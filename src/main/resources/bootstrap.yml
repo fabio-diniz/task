@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: tasks
+  cloud:
+    config:
+      uri: http://localhost:9090

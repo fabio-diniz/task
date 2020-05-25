@@ -1,0 +1,31 @@
+<configuration  scan="true" scanPeriod="30 seconds" packagingData="true">
+
+    <property name="LOG_FOLDER" value="/logs"/>
+    <property name="LOG_FILE_NAME" value="task.log" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FOLDER}/${LOG_FILE_NAME}</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FOLDER}/${LOG_FILE_NAME}.%d{yyyy-MM-dd_HH}hs.%i.zip</fileNamePattern>
+            <maxHistory>240</maxHistory>
+            <maxFileSize>10MB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd/MM/yyyy HH:mm:ss.SSS X}] [%-32mdc{X-B3-TraceId:----- traceId -----}] [%-33.-33thread] [%-5level] [%-70logger{70}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{dd/MM/yyyy HH:mm:ss.SSS X}] [%-32mdc{X-B3-TraceId:----- traceId -----}] [%-33.-33thread] [%-5level] [%-70logger{70}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer" level="DEBUG"/>
+    <logger name="org.hibernate.SQL" level="ERROR" />
+
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
