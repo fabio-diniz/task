@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: task
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://config-server:9090
