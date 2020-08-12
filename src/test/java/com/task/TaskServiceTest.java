@@ -61,7 +61,7 @@ public class TaskServiceTest {
 		List<TaskDTO> tasksRetuned = taskService.getTasks();
 		
 		assertTrue(!tasksRetuned.isEmpty());
-		assertEquals(tasksRetuned.size(), 1);
+		assertEquals(tasksRetuned.size(), 2);
 		assertTrue(TaskDTO.taskDTOToTask(tasksRetuned.get(0), true).equals(tasks.get(0)));
 	}
 	
