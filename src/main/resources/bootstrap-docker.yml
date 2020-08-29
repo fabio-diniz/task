@@ -2,7 +2,7 @@ spring:
   application:
     name: task
   profiles:
-    active: dev
+    active: docker
   cloud:
     config:
-      uri: http://config-server:9090
+      uri: http://config-server:8888
